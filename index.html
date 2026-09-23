@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HealthAGE | 個人サロン開業者向け予約管理プラットフォーム</title>
+<meta name="description" content="HealthAGEは、個人でサロンを開業するセラピスト・施術者向けの予約管理プラットフォームです。">
+<style>
+  :root {
+    --color-bg: #faf9f7;
+    --color-surface: #ffffff;
+    --color-text: #232323;
+    --color-text-muted: #6b6b6b;
+    --color-accent: #8a6d4b;
+    --color-accent-dark: #6b5238;
+    --color-border: #e6e1da;
+    --radius: 12px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --color-bg: #171614;
+      --color-surface: #201f1c;
+      --color-text: #f2efe9;
+      --color-text-muted: #b3aca0;
+      --color-accent: #c9a877;
+      --color-accent-dark: #dfc199;
+      --color-border: #37342d;
+    }
+  }
+  :root[data-theme="dark"] {
+    --color-bg: #171614;
+    --color-surface: #201f1c;
+    --color-text: #f2efe9;
+    --color-text-muted: #b3aca0;
+    --color-accent: #c9a877;
+    --color-accent-dark: #dfc199;
+    --color-border: #37342d;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+    line-height: 1.75;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  header {
+    padding: 56px 0 40px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .logo {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--color-accent-dark);
+    margin: 0 0 12px;
+  }
+  header p.tagline {
+    font-size: 17px;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+  section {
+    padding: 40px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  section:last-of-type {
+    border-bottom: none;
+  }
+  h2 {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    margin: 0 0 18px;
+  }
+  h3 {
+    font-size: 17px;
+    margin: 0 0 6px;
+  }
+  p {
+    margin: 0 0 14px;
+    color: var(--color-text);
+  }
+  .lead {
+    font-size: 17px;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    margin-bottom: 18px;
+  }
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    margin-bottom: 16px;
+  }
+  .card:last-child { margin-bottom: 0; }
+  .price {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-accent-dark);
+  }
+  .price span {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--color-text-muted);
+  }
+  ul {
+    margin: 0;
+    padding-left: 1.2em;
+  }
+  li { margin-bottom: 8px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14.5px;
+  }
+  table th, table td {
+    text-align: left;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: top;
+  }
+  table th {
+    width: 34%;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    padding-right: 16px;
+  }
+  a {
+    color: var(--color-accent-dark);
+  }
+  .contact-box {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 22px;
+  }
+  .contact-box p { margin-bottom: 8px; }
+  .note {
+    font-size: 13px;
+    color: var(--color-text-muted);
+  }
+  footer {
+    padding: 32px 0 56px;
+    font-size: 13px;
+    color: var(--color-text-muted);
+  }
+
+  /* ---- 編集用マーカー(公開前に削除してください) ---- */
+  .todo {
+    background: #fff3cd;
+    color: #6b5300;
+    border: 1px dashed #d9a900;
+    border-radius: 6px;
+    padding: 2px 6px;
+    font-size: 0.85em;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .todo {
+      background: #3a2f10;
+      color: #f0d896;
+      border-color: #8a6d1f;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="logo">HealthAGE</p>
+    <p class="tagline">個人でサロンを開業するセラピスト・施術者と、お客様をつなぐ予約管理プラットフォーム</p>
+  </header>
+
+  <section id="about">
+    <span class="badge">サービス概要</span>
+    <h2>HealthAGEについて</h2>
+    <p class="lead">
+      HealthAGEは、整体・エステ・マッサージなど個人でサロンを開業する施術者(以下「担当者」)向けに、
+      予約受付・スケジュール管理・顧客管理・決済までをワンストップで提供する予約管理プラットフォームです。
+      利用者(お客様)は、アプリ上で担当者を検索し、空き時間から予約を確定できます。
+    </p>
+    <p>
+      担当者は、当プラットフォームを通じて予約枠の公開・管理を行い、成立した予約に応じてプラットフォーム利用料をお支払いいただきます
+      (詳細は下記「料金」をご覧ください)。
+    </p>
+    <p class="note">現在サービスは準備中です。公開時期は決まり次第、本ページにてお知らせします。</p>
+  </section>
+
+  <section id="pricing">
+    <span class="badge">料金</span>
+    <h2>料金プラン(担当者向け)</h2>
+    <div class="card">
+      <h3>予約成立ごとの都度課金</h3>
+      <p class="price">1予約あたり <span>¥1,000</span></p>
+      <p>予約が成立するたびに、登録いただいたお支払い方法から自動的に課金されます。月額固定費はありません。</p>
+    </div>
+    <div class="card">
+      <h3>プランA / プランB</h3>
+      <p>提供機能の範囲に応じた2種類のプランをご用意しています。詳細は担当者向け管理画面にてご案内します。</p>
+    </div>
+  </section>
+
+  <section id="policy">
+    <span class="badge">特定商取引法に基づく表記</span>
+    <h2>事業者情報</h2>
+    <table>
+      <tr><th>販売事業者</th><td>HealthAGE(仮称)</td></tr>
+      <tr><th>運営統括責任者</th><td>正村直樹</td></tr>
+      <tr><th>所在地</th><td>ご請求いただいた場合には遅滞なく開示いたします</td></tr>
+      <tr><th>連絡先</th><td>Eメール: <a href="mailto:healthage.na@gmail.com">healthage.na@gmail.com</a></td></tr>
+      <tr><th>販売価格</th><td>各プラン・都度課金ページに記載の金額(消費税込)</td></tr>
+      <tr><th>お支払い方法</th><td>クレジットカード(Stripe決済)、PayPay</td></tr>
+      <tr><th>お支払い時期</th><td>予約成立ごとに都度課金</td></tr>
+      <tr><th>提供時期</th><td>決済完了後、即時にサービスをご利用いただけます</td></tr>
+      <tr><th>キャンセル・返金について</th><td>予約のキャンセル・変更に関する取り扱いは、利用規約に定める条件に従います。</td></tr>
+    </table>
+  </section>
+
+  <section id="contact">
+    <span class="badge">お問い合わせ</span>
+    <h2>お問い合わせ先</h2>
+    <div class="contact-box">
+      <p>サービスに関するお問い合わせは、下記メールアドレスまでご連絡ください。</p>
+      <p>Eメール: <a href="mailto:healthage.na@gmail.com">healthage.na@gmail.com</a></p>
+      <p class="note">通常、2営業日以内にご返信いたします。</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 HealthAGE. All rights reserved.</p>
+  </footer>
+
+</div>
+</body>
+</html>
